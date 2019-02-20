@@ -530,7 +530,7 @@ module.exports.getWrapper = (modName, modPath, handler) => {
     wrapped = lambdaWrapper.wrap(mod);
   } else {
     /* eslint-disable global-require */
-    const mod = require(process.env.SERVERLESS_TEST_ROOT + modPath);
+    const mod = require(path.resolve(process.env.SERVERLESS_TEST_ROOT, modPath));
     /* eslint-enable global-require */
     wrapped = lambdaWrapper.wrap(mod, {
       handler,
